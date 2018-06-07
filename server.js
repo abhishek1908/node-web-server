@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const port  = process.env.PORT || 3000;
 
 var app = express();
 
@@ -18,10 +19,10 @@ app.use((req,res,next)=>{
   });
   next();
 });
-
-app.use((req,res,next)=>{
-  res.render('maintenance.hbs');
-});
+//
+// app.use((req,res,next)=>{
+//   res.render('maintenance.hbs');
+// });
 
 app.use(express.static(__dirname+'/public'));
 
@@ -55,6 +56,6 @@ app.get('/bad',(req,res)=>{
   })
 });
 
-app.listen(8000,()=>{
-  console.log("Server is up on port 8000.")
+app.listen(port,()=>{
+  console.log(`Server is up on port ${port}`);
 });
